@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.3.32811.315
+VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NZWalks.Api", "NZWalks.Api\NZWalks.Api.csproj", "{2E8CC124-4DF3-4060-BB0E-591599DE0CB0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NzWalks.Api", "NzWalks.Api\NzWalks.Api.csproj", "{F5BA0E70-74CB-4429-B2CC-FB187B6105A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2E8CC124-4DF3-4060-BB0E-591599DE0CB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2E8CC124-4DF3-4060-BB0E-591599DE0CB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2E8CC124-4DF3-4060-BB0E-591599DE0CB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2E8CC124-4DF3-4060-BB0E-591599DE0CB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5BA0E70-74CB-4429-B2CC-FB187B6105A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5BA0E70-74CB-4429-B2CC-FB187B6105A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5BA0E70-74CB-4429-B2CC-FB187B6105A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5BA0E70-74CB-4429-B2CC-FB187B6105A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E772AC37-0BF6-4A96-BB11-11F55CA842B7}
+		SolutionGuid = {F6987FC4-FC06-4CDD-947E-5C4776BD31D3}
 	EndGlobalSection
 EndGlobal
