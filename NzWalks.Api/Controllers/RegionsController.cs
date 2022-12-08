@@ -17,7 +17,6 @@ namespace NzWalks.Api.Controllers
             _regionRepository = regionRepository;
         }
 
-
         [HttpGet]
         public async Task<IActionResult> GetAllRegions()
         {

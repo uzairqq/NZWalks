@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "tnj69bz3LvEue69mjo85aGOamUParEhcloFCXnKcHnphYRZaU6AyxDDnHsMDvpNb+keoNXgnm/yhXyJfDL6lYw==",
+  "dgSpecHash": "crMB6SrZft9DGpQETd1lrzmGsK6ZsU9qhV0sCS/fRM1z1Z17mI6OAh7eihe+1EcNUMyx+pyRTXkKPOckceCVww==",
   "success": true,
   "projectFilePath": "C:\\Programming\\NZWalks\\NzWalks.Api\\NzWalks.Api.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\uzair\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
+    "C:\\Users\\uzair\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
     "C:\\Users\\uzair\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
-    "C:\\Users\\uzair\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\uzair\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\uzair\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\uzair\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\uzair\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.11\\microsoft.entityframeworkcore.6.0.11.nupkg.sha512",
