@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NzWalks.Api.Data;
+using NzWalks.Api.Repositories.Intefaces;
 
 namespace NzWalks.Api.Controllers
 {
@@ -9,17 +10,18 @@ namespace NzWalks.Api.Controllers
     [ApiController]
     public class RegionsController : ControllerBase
     {
-        private readonly NzWalksDbContext _nzWalksDbContext;
+        private readonly IRegionRepository _regionRepository;
 
-        
-        public RegionsController(NzWalksDbContext nzWalksDbContext)
+        public RegionsController(IRegionRepository regionRepository)
         {
-            _nzWalksDbContext = nzWalksDbContext;
+            _regionRepository = regionRepository;
         }
+
+
         [HttpGet]
         public async Task<IActionResult> GetAllRegions()
         {
-            var regions = await _nzWalksDbContext.Regions.ToListAsync();
+            var regions = await _regionRepository.GetAllAsync();
             return Ok(regions);
         }
     }
