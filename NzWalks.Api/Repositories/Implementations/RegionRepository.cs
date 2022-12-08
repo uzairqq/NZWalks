@@ -32,5 +32,20 @@ namespace NzWalks.Api.Repositories.Implementations
                 throw;
             }
         }
+
+        public async Task<RegionsDto> GetRegionAsync(Guid id)
+        {
+            try
+            {
+                var region = await _nzWalksDbContext.Regions.FirstOrDefaultAsync(i => i.Id == id);
+                var regionDto=_mapper.Map<RegionsDto>(region);
+                return regionDto;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

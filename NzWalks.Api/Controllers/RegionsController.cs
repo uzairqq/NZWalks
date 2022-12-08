@@ -20,8 +20,36 @@ namespace NzWalks.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllRegions()
         {
-            var regions = await _regionRepository.GetAllAsync();
-            return Ok(regions);
+            try
+            {
+                var regions = await _regionRepository.GetAllAsync();
+                return Ok(regions);
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet]
+        [Route("{id:guid}")]
+        public async Task<IActionResult> GetRegion(Guid id)
+        {
+            try
+            {
+                var region = await _regionRepository.GetRegionAsync(id);
+                if (region == null)
+                {
+                    return NotFound();
+                }
+                return Ok(region);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
