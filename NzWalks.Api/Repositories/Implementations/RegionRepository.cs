@@ -38,8 +38,43 @@ namespace NzWalks.Api.Repositories.Implementations
             try
             {
                 var region = await _nzWalksDbContext.Regions.FirstOrDefaultAsync(i => i.Id == id);
-                var regionDto=_mapper.Map<RegionsDto>(region);
+                var regionDto = _mapper.Map<RegionsDto>(region);
                 return regionDto;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
+        public async Task<RegionsDto> PostRegionAsync(AddRegionDto dto)
+        {
+            try
+            {
+                var region = await _nzWalksDbContext.Regions.AddAsync(new Region()
+                {
+                    Lat = dto.Lat,
+                    Long = dto.Long,
+                    Area = dto.Area,
+                    Code = dto.Code,
+                    Name = dto.Name,
+                    Population = dto.Population,
+                });
+                await _nzWalksDbContext.SaveChangesAsync();
+
+                var regionsMapping = new RegionsDto()
+                {
+                    Id = region.Entity.Id,
+                    Area=region.Entity.Area,
+                    Code=region.Entity.Code,
+                    Lat=region.Entity.Lat,
+                    Long=region.Entity.Long,
+                    Name=region.Entity.Name,
+                    Population=region.Entity.Population
+                };
+                return regionsMapping;
             }
             catch (Exception)
             {

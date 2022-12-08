@@ -7,5 +7,7 @@ namespace NzWalks.Api.Repositories.Intefaces
     {
         Task<IEnumerable<RegionsDto>> GetAllAsync();
         Task<RegionsDto> GetRegionAsync(Guid id);
+
+        Task<RegionsDto> PostRegionAsync(AddRegionDto dto);
     }
 }

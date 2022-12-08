@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NzWalks.Api.Data;
+using NzWalks.Api.Dto;
 using NzWalks.Api.Repositories.Intefaces;
 
 namespace NzWalks.Api.Controllers
@@ -51,5 +52,21 @@ namespace NzWalks.Api.Controllers
                 throw;
             }
         }
+
+        [HttpPost]
+        public async Task<IActionResult> PostRegionAsync(AddRegionDto dto)
+        {
+            try
+            {
+                var region = await _regionRepository.PostRegionAsync(dto);
+                return CreatedAtAction("PostRegion", region);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
     }
 }
