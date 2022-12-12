@@ -18,7 +18,7 @@ namespace NzWalks.Api.Repositories.Implementations
             _mapper = mapper;
         }
 
-       
+
 
         public async Task<IEnumerable<RegionsDto>> GetAllAsync()
         {
@@ -51,7 +51,7 @@ namespace NzWalks.Api.Repositories.Implementations
         }
 
 
-        public async Task<RegionsDto> PostRegionAsync(AddRegionDto dto)
+        public async Task<RegionsDto> PostRegionAsync(AddUpdateRegionDto dto)
         {
             try
             {
@@ -69,12 +69,12 @@ namespace NzWalks.Api.Repositories.Implementations
                 var regionsMapping = new RegionsDto()
                 {
                     Id = region.Entity.Id,
-                    Area=region.Entity.Area,
-                    Code=region.Entity.Code,
-                    Lat=region.Entity.Lat,
-                    Long=region.Entity.Long,
-                    Name=region.Entity.Name,
-                    Population=region.Entity.Population
+                    Area = region.Entity.Area,
+                    Code = region.Entity.Code,
+                    Lat = region.Entity.Lat,
+                    Long = region.Entity.Long,
+                    Name = region.Entity.Name,
+                    Population = region.Entity.Population
                 };
                 return regionsMapping;
             }
@@ -89,15 +89,15 @@ namespace NzWalks.Api.Repositories.Implementations
         {
             try
             {
-                var region =await _nzWalksDbContext.Regions.FirstOrDefaultAsync(i => i.Id == id);
+                var region = await _nzWalksDbContext.Regions.FirstOrDefaultAsync(i => i.Id == id);
                 if (region == null)
                 {
-                    return new RegionsDto();
+                    return null;
                 }
                 _nzWalksDbContext.Regions.Remove(region);
                 await _nzWalksDbContext.SaveChangesAsync();
 
-                var regionsDtoMapping=new RegionsDto()
+                var regionsDtoMapping = new RegionsDto()
                 {
                     Id = region.Id,
                     Name = region.Name,
@@ -118,5 +118,44 @@ namespace NzWalks.Api.Repositories.Implementations
             }
         }
 
+        public async Task<RegionsDto> UpdateRegionsAsync(Guid id, AddUpdateRegionDto addUpdateRegionDto)
+        {
+            try
+            {
+                var existingRegion = await _nzWalksDbContext.Regions.FirstOrDefaultAsync(i => i.Id == id);
+
+                if (existingRegion == null)
+                {
+                    return null;
+                }
+
+                existingRegion.Lat = addUpdateRegionDto.Lat;
+                existingRegion.Long = addUpdateRegionDto.Long;
+                existingRegion.Name = addUpdateRegionDto.Name;
+                existingRegion.Population = addUpdateRegionDto.Population;
+                existingRegion.Code = addUpdateRegionDto.Code;
+                existingRegion.Area = addUpdateRegionDto.Area;
+
+                _nzWalksDbContext.Regions.Update(existingRegion);
+                await _nzWalksDbContext.SaveChangesAsync();
+
+                var regionsDtoMapping = new RegionsDto()
+                {
+                    Id = existingRegion.Id,
+                    Name = existingRegion.Name,
+                    Population = existingRegion.Population,
+                    Area = existingRegion.Area,
+                    Code = existingRegion.Code,
+                    Lat = existingRegion.Lat,
+                    Long = existingRegion.Long
+                };
+                return regionsDtoMapping;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

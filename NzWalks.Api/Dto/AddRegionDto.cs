@@ -1,6 +1,6 @@
 ﻿namespace NzWalks.Api.Dto
 {
-    public class AddRegionDto
+    public class AddUpdateRegionDto
     {
         public string Code { get; set; }
         public string Name { get; set; }

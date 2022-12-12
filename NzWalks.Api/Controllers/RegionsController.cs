@@ -54,7 +54,7 @@ namespace NzWalks.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostRegionAsync(AddRegionDto dto)
+        public async Task<IActionResult> PostRegionAsync(AddUpdateRegionDto dto)
         {
             try
             {
@@ -76,6 +76,31 @@ namespace NzWalks.Api.Controllers
             try
             {
                 var region = await _regionRepository.DeleteRegionAsync(id);
+                if (region == null)
+                {
+                    return NotFound();
+                }
+                return Ok(region);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
+        [HttpPut]
+        [Route("{id:guid}")]
+        public async Task<IActionResult> UpdateRegionsAsync([FromRoute] Guid id, [FromBody] AddUpdateRegionDto addUpdateRegionDto)
+        {
+            try
+            {
+                var region = await _regionRepository.UpdateRegionsAsync(id, addUpdateRegionDto);
+                if (region==null)
+                {
+                    return NotFound();
+                }
                 return Ok(region);
             }
             catch (Exception)
