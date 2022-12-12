@@ -68,5 +68,22 @@ namespace NzWalks.Api.Controllers
             }
         }
 
+
+        [HttpDelete]
+        [Route("{id:guid}")]
+        public async Task<IActionResult> DeleteRegionAsync(Guid id)
+        {
+            try
+            {
+                var region = await _regionRepository.DeleteRegionAsync(id);
+                return Ok(region);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
     }
 }

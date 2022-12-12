@@ -18,6 +18,8 @@ namespace NzWalks.Api.Repositories.Implementations
             _mapper = mapper;
         }
 
+       
+
         public async Task<IEnumerable<RegionsDto>> GetAllAsync()
         {
             try
@@ -82,5 +84,39 @@ namespace NzWalks.Api.Repositories.Implementations
                 throw;
             }
         }
+
+        public async Task<RegionsDto> DeleteRegionAsync(Guid id)
+        {
+            try
+            {
+                var region =await _nzWalksDbContext.Regions.FirstOrDefaultAsync(i => i.Id == id);
+                if (region == null)
+                {
+                    return new RegionsDto();
+                }
+                _nzWalksDbContext.Regions.Remove(region);
+                await _nzWalksDbContext.SaveChangesAsync();
+
+                var regionsDtoMapping=new RegionsDto()
+                {
+                    Id = region.Id,
+                    Name = region.Name,
+                    Population = region.Population,
+                    Area = region.Area,
+                    Code = region.Code,
+                    Lat = region.Lat,
+                    Long = region.Long
+                };
+
+                return regionsDtoMapping;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
     }
 }
