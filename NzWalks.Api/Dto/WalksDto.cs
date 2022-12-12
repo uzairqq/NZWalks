@@ -12,5 +12,8 @@ namespace NzWalks.Api.Dto
         public Guid RegionId { get; set; }
         public Guid WalkDifficultyId { get; set; }
 
+        public string Region { get; set; }
+        public string WalkDifficulty { get; set; }
+
     }
 }

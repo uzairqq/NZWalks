@@ -30,7 +30,7 @@ namespace NzWalks.Api.Repositories.Implementations
 
                 var walkDtoMapping = new WalksDto()
                 {
-                    Id=walk.Id,
+                    Id = walk.Id,
                     Name = walk.Name,
                     Length = walk.Length,
                     RegionId = walk.RegionId,
@@ -50,14 +50,19 @@ namespace NzWalks.Api.Repositories.Implementations
         {
             try
             {
-                var walks = await _nzWalksDbContext.Walks.Select(i => new WalksDto()
-                {
-                    Id=i.Id,
-                    Name = i.Name,
-                    Length = i.Length,
-                    RegionId = i.RegionId,
-                    WalkDifficultyId = i.WalkDifficultyId
-                }).ToListAsync();
+                var walks = await _nzWalksDbContext.Walks
+                    .Include(i => i.Region)
+                    .Include(u => u.WalkDifficulty)
+                    .Select(i => new WalksDto()
+                    {
+                        Id = i.Id,
+                        Name = i.Name,
+                        Length = i.Length,
+                        RegionId = i.RegionId,
+                        WalkDifficultyId = i.WalkDifficultyId,
+                        Region=i.Region.Name,
+                        WalkDifficulty=i.WalkDifficulty.Code
+                    }).ToListAsync();
 
                 return walks;
             }
@@ -72,18 +77,24 @@ namespace NzWalks.Api.Repositories.Implementations
         {
             try
             {
-                var walk = await _nzWalksDbContext.Walks.FirstOrDefaultAsync(i => i.Id == id);
+                var walk = await _nzWalksDbContext.Walks
+                    .Include(i => i.Region)
+                    .Include(u => u.WalkDifficulty)
+                    .FirstOrDefaultAsync(i => i.Id == id);
                 if (walk == null)
                 {
                     return null;
                 }
                 var mappedWalkDto = new WalksDto()
                 {
-                    Id=walk.Id,
+                    Id = walk.Id,
                     Name = walk.Name,
                     Length = walk.Length,
                     RegionId = walk.RegionId,
-                    WalkDifficultyId = walk.WalkDifficultyId
+                    WalkDifficultyId = walk.WalkDifficultyId,
+                    Region = walk.Region.Name,
+                    WalkDifficulty=walk.WalkDifficulty.Code
+
                 };
                 return mappedWalkDto;
             }
