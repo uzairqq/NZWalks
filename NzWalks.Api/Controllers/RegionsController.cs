@@ -35,7 +35,7 @@ namespace NzWalks.Api.Controllers
 
         [HttpGet]
         [Route("{id:guid}")]
-        public async Task<IActionResult> GetRegion(Guid id)
+        public async Task<IActionResult> GetRegionAsync(Guid id)
         {
             try
             {
