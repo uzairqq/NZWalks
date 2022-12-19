@@ -35,7 +35,7 @@ namespace NzWalks.Api.Controllers
 
 
         [HttpPut]
-        [Route("id:{guid}")]
+        [Route("{id:guid}")]
         public async Task<IActionResult> PutAsync([FromRoute] Guid id, [FromBody] AddUpdateWalkDifficultyDto dto)
         {
             try
@@ -75,7 +75,7 @@ namespace NzWalks.Api.Controllers
         }
 
         [HttpGet]
-        [Route("id:{guid}")]
+        [Route("{id:guid}")]
         public async Task<IActionResult> GetAllAsync(Guid id)
         {
             try
@@ -96,7 +96,7 @@ namespace NzWalks.Api.Controllers
 
 
         [HttpDelete]
-        [Route("id:{guid}")]
+        [Route("{id:guid}")]
         public async Task<IActionResult> DeleteAsync(Guid id)
         {
             try
